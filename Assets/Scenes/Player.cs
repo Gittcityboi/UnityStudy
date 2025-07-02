@@ -16,8 +16,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float xinput = Input.GetAxis("Horizontal");
-        float zinput = Input.GetAxis("Vertical");
+        float xinput = Input.GetAxisRaw("Horizontal");
+        float zinput = Input.GetAxisRaw("Vertical");
 
         float xSpeed = xinput * speed;
         float zSpeed = zinput * speed;
@@ -54,6 +54,8 @@ public class Player : MonoBehaviour
     public void Die()
     {
         gameObject.SetActive(false);
+        GameManager gameManager = FindObjectOfType<GameManager>();
+        gameManager.EndGame();
     }
 
 }
